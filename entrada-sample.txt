@@ -1,9 +1,12 @@
-[número de corretores]
-[telefone] [avaliador] [latitude] [longitude] [nome]
-...
-[número de clientes]
-[telefone] [nome]
-...
-[número de imóveis]
-[tipo] [proprietarioId] [latitude] [longitude] [preco] [endereco]
-...
+2
+11999999999 1 -23.561684 -46.625378 Ana Paula da Silva
+11888888888 0 -23.564512 -46.651943 Marcos Lima
+3
+11912345678 João Oliveira
+11987654321 Maria Souza
+11955554444 Pedro Almeida
+4
+Casa 1 -23.565432 -46.633221 450000.00 Rua das Flores, 123
+Apartamento 2 -23.567800 -46.640000 350000.00 Avenida Paulista, 1578
+Terreno 3 -23.559999 -46.622000 200000.00 Alameda Santos, 45
+Casa 1 -23.568800 -46.644400 500000.00 Rua Verde, 99
