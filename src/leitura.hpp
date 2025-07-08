@@ -2,9 +2,9 @@
 #define LEITURA_H
 
 #include <vector>
-#include "corretor.h"
-#include "cliente.h"
-#include "imovel.h"
+#include "corretor.hpp"
+#include "cliente.hpp"
+#include "imovel.hpp"
 
 std::vector<Corretor> lerCorretores();
 std::vector<Cliente> lerClientes();

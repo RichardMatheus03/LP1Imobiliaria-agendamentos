@@ -1,4 +1,4 @@
-#include "cliente.h"
+#include "cliente.hpp"
 
 Cliente::Cliente(int id, std::string telefone, std::string nome):
     id(id), telefone(telefone), nome(nome){}; //Construtor

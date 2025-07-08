@@ -1,4 +1,4 @@
-#include "corretor.h"
+#include "corretor.hpp"
 
 int Corretor::nextId = 1; //Inicia o primeiro ID como 1
 
