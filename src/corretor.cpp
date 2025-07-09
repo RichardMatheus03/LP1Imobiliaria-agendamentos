@@ -1,4 +1,7 @@
 #include "corretor.hpp"
+#include <iostream>
+
+using namespace std;
 
 int Corretor::nextId = 1; //Inicia o primeiro ID como 1
 
@@ -22,3 +25,21 @@ double Corretor::getLng() const{
 std::string Corretor::getNome() const{
     return this->nome;
 }
+
+Corretor::Corretor() {
+    this->id = nextId++; //Incrementa o ID a cada corretor construído
+    this->telefone = "";
+    this->avaliador = false;
+    this->lat = 0.0;
+    this->lng = 0.0;
+    this->nome = "";
+};
+
+void Corretor::mostrarInfo() {
+    cout << "ID: " << id << std::endl;
+    std::cout << "Telefone: " << telefone << std::endl;
+    std::cout << "Avaliador: " << (avaliador ? "Sim" : "Não") << std::endl;
+    std::cout << "Latitude: " << lat << std::endl;
+    std::cout << "Longitude: " << lng << std::endl;
+    std::cout << "Nome: " << nome << std::endl;
+} //Método para mostrar as informações do corretor
