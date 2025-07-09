@@ -27,3 +27,28 @@ std::string Imovel::getTipoAsString() const {
         default: return "Desconhecido";
     }
 }
+
+int Imovel::getProprietarioId() const{
+    return this->proprietarioId;
+}
+double Imovel::getLat() const{
+    return this->lat;
+}
+double Imovel::getLng() const{
+    return this->lng;
+}
+double Imovel::getPreco() const{
+    return this->preco;
+}
+std::string Imovel::getEndereco() const{
+    return this->endereco;
+}
+
+Imovel::Imovel(){
+    this->tipo = TipoImovel::Casa;
+    this->proprietarioId = 0;
+    this->lat = 0.0;
+    this->lng = 0.0;
+    this->preco = 0;
+    this->endereco = "";
+};
