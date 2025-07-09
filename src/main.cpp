@@ -4,25 +4,30 @@
 
 using namespace std;
 
+std::vector<Corretor> filtrarCorretoresAvaliadores(const std::vector<Corretor>& corretores) {
+    std::vector<Corretor> avaliadores;
+
+    for (int i = 0; i < corretores.size(); ++i) {
+        if (corretores[i].avaliador) {
+            avaliadores.push_back(corretores[i]);
+        }
+    }
+    return avaliadores;
+}
+
 int main() {
 
-    /*int numCorretores;
-    std::cin >> numCorretores;
-
-    for (int i = 0; i < numCorretores; i++) {
-        cout << "Corretor " << i << ": ";   
-    }*/
-
-    //teste de leitura
     auto corretores = lerCorretores();
     auto clientes = lerClientes();
     auto imoveis = lerImoveis();
 
-    //Imprime as informações
-    std::cout << "Corretores lidos: " << corretores.size() << "\n";
-    for (const auto& c : corretores) {
-        std::cout << "    " << c.telefone << " " << c.avaliador << " " << c.lat << " " << c.lng << " " << c.nome << "\n";
-    }
+    std::vector<Corretor> corretoresAvaliadores = filtrarCorretoresAvaliadores(corretores);
+
+    
+
+    std::cout << "Corretores lidos: " << corretores.size() << std::endl;
+    std::cout << "Clientes lidos: " << clientes.size() << std::endl;
+    std::cout << "Imóveis lidos: " << imoveis.size() << std::endl;
 
     std::cout << "Clientes lidos: " << clientes.size() << "\n";
     for (const auto& cl : clientes) {

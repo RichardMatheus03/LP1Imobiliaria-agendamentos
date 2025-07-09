@@ -12,7 +12,13 @@ class Corretor{
         double lat;
         double lng;
         std::string nome;
+
+        // Construtor
+        Corretor(); // Contrutor padrão
         Corretor(std::string telefone, bool avaliador, double lat, double lng, std::string nome); //construtor
+        
+        //Métodos
+        void mostrarInfo();
 };
 
 #endif
