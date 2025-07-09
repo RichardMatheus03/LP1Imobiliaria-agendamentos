@@ -21,7 +21,7 @@ int main() {
     //Imprime as informações
     std::cout << "Corretores lidos: " << corretores.size() << "\n";
     for (const auto& c : corretores) {
-        std::cout << "    " << c.telefone << " " << c.avaliador << " " << c.lat << " " << c.lng << " " << c.nome << "\n";
+        std::cout << "    " << c.getTelefone() << " " << c.getAvaliador() << " " << c.getLat() << " " << c.getLng() << " " << c.getNome() << "\n";
     }
 
     std::cout << "Clientes lidos: " << clientes.size() << "\n";
