@@ -7,8 +7,17 @@ Imovel::Imovel(std::string tipoStr, int proprietarioId, double lat, double lng, 
         this->id = nextId++; //Incrementa o ID a cada corretor construído
 } //Construtor
 
-TipoImovel parseTipo(const std::string& tipoStr){ //Converte String para enum class
+TipoImovel parseTipo(const std::string& tipoStr){ //Converte String para enum
     if(tipoStr == "Casa"){return TipoImovel::Casa;}
     else if(tipoStr == "Apartamento"){return TipoImovel::Apartamento;}
     else{return TipoImovel::Terreno;}
+}
+
+std::string Imovel::getTipoAsString() const {
+    switch (tipo) {
+        case TipoImovel::Casa: return "Casa";
+        case TipoImovel::Apartamento: return "Apartamento";
+        case TipoImovel::Terreno: return "Terreno";
+        default: return "Desconhecido";
+    }
 }

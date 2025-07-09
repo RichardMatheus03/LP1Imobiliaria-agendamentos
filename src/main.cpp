@@ -1,5 +1,6 @@
 #include <iostream>
-#include "leitura.h"
+#include <iomanip> //para setprecision
+#include "leitura.hpp"
 
 using namespace std;
 
@@ -17,9 +18,20 @@ int main() {
     auto clientes = lerClientes();
     auto imoveis = lerImoveis();
 
-    std::cout << "Corretores lidos: " << corretores.size() << std::endl;
-    std::cout << "Clientes lidos: " << clientes.size() << std::endl;
-    std::cout << "Imóveis lidos: " << imoveis.size() << std::endl;
+    //Imprime as informações
+    std::cout << "Corretores lidos: " << corretores.size() << "\n";
+    for (const auto& c : corretores) {
+        std::cout << "    " << c.telefone << " " << c.avaliador << " " << c.lat << " " << c.lng << " " << c.nome << "\n";
+    }
 
+    std::cout << "Clientes lidos: " << clientes.size() << "\n";
+    for (const auto& cl : clientes) {
+        std::cout << "    " << cl.getTelefone() << " " << cl.getNome() << "\n";
+    }
+
+    std::cout << "Imóveis lidos: " << imoveis.size() << "\n";
+    for (const auto& im : imoveis) {
+        std::cout << "    " << im.getTipoAsString() << " " << im.proprietarioId << " " << im.lat << " " << im.lng << " " << std::fixed << std::setprecision(2) << im.preco << " " << im.endereco << "\n";
+    }
     return 0;
 }

@@ -16,6 +16,8 @@ class Imovel{
         std::string endereco;
 
         Imovel(std::string tipoStr, int proprietarioId, double lat, double lng, double preco, std::string endereco);
+        
+        std::string getTipoAsString() const;
 };
 
 TipoImovel parseTipo(const std::string& tipoStr); //Converte String para enum class
