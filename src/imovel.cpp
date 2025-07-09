@@ -8,9 +8,15 @@ Imovel::Imovel(std::string tipoStr, int proprietarioId, double lat, double lng, 
 } //Construtor
 
 TipoImovel parseTipo(const std::string& tipoStr){ //Converte String para enum
-    if(tipoStr == "Casa"){return TipoImovel::Casa;}
-    else if(tipoStr == "Apartamento"){return TipoImovel::Apartamento;}
-    else{return TipoImovel::Terreno;}
+    if(tipoStr == "Casa") {
+        return TipoImovel::Casa;
+    }
+    else if(tipoStr == "Apartamento") {
+        return TipoImovel::Apartamento;
+    }
+    else {
+        return TipoImovel::Terreno;
+    }
 }
 
 std::string Imovel::getTipoAsString() const {
