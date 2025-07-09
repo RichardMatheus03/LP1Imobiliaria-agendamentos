@@ -4,7 +4,7 @@
 #include <string>
 
 class Corretor{
-    public:
+    private:
         static int nextId;
         int id;
         std::string telefone;
@@ -12,7 +12,13 @@ class Corretor{
         double lat;
         double lng;
         std::string nome;
+    public:
         Corretor(std::string telefone, bool avaliador, double lat, double lng, std::string nome); //construtor
+        std::string getTelefone() const;
+        int getAvaliador() const;
+        double getLat() const;
+        double getLng() const;
+        std::string getNome() const;
 };
 
 #endif
