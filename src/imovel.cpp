@@ -27,7 +27,9 @@ std::string Imovel::getTipoAsString() const {
         default: return "Desconhecido";
     }
 }
-
+double Imovel::getId() const{
+    return this->id;
+}
 int Imovel::getProprietarioId() const{
     return this->proprietarioId;
 }

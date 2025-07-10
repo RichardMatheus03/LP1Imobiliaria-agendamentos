@@ -16,6 +16,7 @@ class Imovel{
         std::string endereco;
     public:
         //getters
+        double getId() const;
         std::string getTipoAsString() const;
         int getProprietarioId() const;
         double getLat() const;

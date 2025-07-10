@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip> //para setprecision
 #include "leitura.hpp"
-#include "utilitarios.cpp"
+#include "utilitarios.hpp"
 
 using namespace std;
 
@@ -17,8 +17,14 @@ int main() {
         
         // Para cada avaliador
         Corretor& corretorAvaliador = corretoresAvaliadores[i];
-
         Imovel imovelMaisProximo = encontrarImovelMaisProximo(corretorAvaliador, imoveis);
+
+        //Prints de Teste
+        std::cout << "Corretor " << corretorAvaliador.getNome()
+                  << " irá avaliar: " << std::endl
+                  << "    Imóvel " << imovelMaisProximo.getId()
+                  << " - Tipo: " << imovelMaisProximo.getTipoAsString()
+                  << std::endl;
 
     }
 

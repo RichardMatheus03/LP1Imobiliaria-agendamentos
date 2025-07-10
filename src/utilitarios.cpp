@@ -7,8 +7,8 @@
 #include "corretor.hpp"
 #include "imovel.hpp"
 
-
 constexpr double EARTH_R = 6371.0; // Raio da Terra em km
+
 double haversine(double lat1, double lon1, double lat2, double lon2) {
     auto deg2rad = [](double d){ return d * M_PI / 180.0; };
     double dlat = deg2rad(lat2 - lat1);
@@ -21,6 +21,7 @@ double haversine(double lat1, double lon1, double lat2, double lon2) {
 }
 
 std::vector<Corretor> filtrarCorretoresAvaliadores(const std::vector<Corretor>& corretores) {
+
     std::vector<Corretor> avaliadores;
 
     for (size_t i = 0; i < corretores.size(); ++i) {
@@ -28,12 +29,14 @@ std::vector<Corretor> filtrarCorretoresAvaliadores(const std::vector<Corretor>& 
             avaliadores.push_back(corretores[i]);
         }
     }
+
     return avaliadores;
+
 }
 
 Imovel encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Imovel>& imoveis) {
     
-    double menorDistancia;
+    double menorDistancia = 9*10^9; //É necessário inicializar a variável com algum valor
     Imovel imovelMaisProximo;
     
     for (size_t i = 0; i < imoveis.size(); ++i) {
@@ -42,9 +45,11 @@ Imovel encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Im
 
         if (distancia < menorDistancia) {
             menorDistancia = distancia;
-            Imovel imovelMaisProximo = imoveis[i]; 
+            imovelMaisProximo = imoveis[i];
         }
 
-        return imoveis[i];
     }
+
+    return imovelMaisProximo;
+
 };
