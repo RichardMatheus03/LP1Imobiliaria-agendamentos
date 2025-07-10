@@ -17,11 +17,11 @@ class Imovel{
     public:
         //getters
         std::string getTipoAsString() const;
-        int Imovel::getProprietarioId() const;
-        double Imovel::getLat() const;
-        double Imovel::getLng() const;
-        double Imovel::getPreco() const;
-        std::string Imovel::getEndereco() const;
+        int getProprietarioId() const;
+        double getLat() const;
+        double getLng() const;
+        double getPreco() const;
+        std::string getEndereco() const;
 
         Imovel(std::string tipoStr, int proprietarioId, double lat, double lng, double preco, std::string endereco); //Construtor
         Imovel(); //Construtor Padrão

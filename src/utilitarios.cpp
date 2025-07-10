@@ -24,7 +24,7 @@ std::vector<Corretor> filtrarCorretoresAvaliadores(const std::vector<Corretor>& 
     std::vector<Corretor> avaliadores;
 
     for (size_t i = 0; i < corretores.size(); ++i) {
-        if (corretores[i].avaliador) {
+        if (corretores[i].getAvaliador()) {
             avaliadores.push_back(corretores[i]);
         }
     }
@@ -38,7 +38,7 @@ Imovel encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Im
     
     for (size_t i = 0; i < imoveis.size(); ++i) {
         
-        double distancia = haversine(corretor.lat, corretor.lng, imoveis[i].lat, imoveis[i].lng);
+        double distancia = haversine(corretor.getLat(), corretor.getLng(), imoveis[i].getLat(), imoveis[i].getLng());
 
         if (distancia < menorDistancia) {
             menorDistancia = distancia;
