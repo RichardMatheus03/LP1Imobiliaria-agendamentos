@@ -20,10 +20,9 @@ int main() {
         Imovel imovelMaisProximo = encontrarImovelMaisProximo(corretorAvaliador, imoveis);
 
         //Prints de Teste
-        std::cout << "Corretor " << corretorAvaliador.getNome()
-                  << " irá avaliar: " << std::endl
+        std::cout << "Corretor " << corretorAvaliador.getId() << endl;
+                 // colocar hora na mesma linha do imovel
                   << "    Imóvel " << imovelMaisProximo.getId()
-                  << " - Tipo: " << imovelMaisProximo.getTipoAsString()
                   << std::endl;
 
     }
