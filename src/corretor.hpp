@@ -19,6 +19,7 @@ class Corretor{
         double getLat() const;
         double getLng() const;
         std::string getNome() const;
+        int getId() const;
         
         // Construtor
         Corretor(std::string telefone, bool avaliador, double lat, double lng, std::string nome); //construtor

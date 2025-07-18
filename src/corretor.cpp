@@ -25,6 +25,9 @@ double Corretor::getLng() const{
 std::string Corretor::getNome() const{
     return this->nome;
 }
+int Corretor::getId() const{
+    return this->id;
+}
 
 Corretor::Corretor() {
     this->id = nextId++; //Incrementa o ID a cada corretor construído
