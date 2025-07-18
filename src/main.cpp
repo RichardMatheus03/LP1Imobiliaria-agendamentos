@@ -17,12 +17,21 @@ int main() {
         
         // Para cada avaliador
         Corretor& corretorAvaliador = corretoresAvaliadores[i];
-        Imovel imovelMaisProximo = encontrarImovelMaisProximo(corretorAvaliador, imoveis);
+        
+        //Separando imoveis para cada corretor
+        std::vector<Imovel> imoveisDesseCorretor;
+        for (size_t i = 0; i < imoveis.size(); ++i) {
+            if (imoveis[i].getProprietarioId() == corretorAvaliador.getId()) {
+                imoveisDesseCorretor.push_back(imoveis[i]);
+            }
+        }
+        
+        //Imovel imovelMaisProximo = encontrarImovelMaisProximo(corretorAvaliador, imoveisDesseCorretor);
 
         //Prints de Teste
-        std::cout << "Corretor " << corretorAvaliador.getId() << endl
-                  << "    Imóvel " << imovelMaisProximo.getId()
-                  << std::endl;
+        std::cout << corretorAvaliador.getId() << " " << corretorAvaliador.getNome() << std::endl;
+         
+        
 
     }
 

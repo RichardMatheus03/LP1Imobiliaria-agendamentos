@@ -53,3 +53,8 @@ Imovel encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Im
     return imovelMaisProximo;
 
 };
+
+std::vector<Imovel> pegarImoveisDesseCorretor(Corretor corretor){
+    int id = corretor.getId();
+    
+}
