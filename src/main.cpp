@@ -26,12 +26,23 @@ int main() {
             }
         }
         
-        //Imovel imovelMaisProximo = encontrarImovelMaisProximo(corretorAvaliador, imoveisDesseCorretor);
-
-        //Prints de Teste
-        std::cout << corretorAvaliador.getId() << " " << corretorAvaliador.getNome() << std::endl;
-         
+        Imovel imovelMaisProximo = encontrarImovelMaisProximo(corretorAvaliador, imoveisDesseCorretor);  
         
+        cout << "Corretor: " << corretorAvaliador.getNome() << endl;
+        cout << "id: " << corretorAvaliador.getId() << endl;
+
+        cout << "----------------------------------------" << endl;
+
+        for (size_t i = 0; i < imoveisDesseCorretor.size(); ++i) {
+            imoveisDesseCorretor[i].showInfo();
+        }
+
+        cout << "----------------------------------------" << endl;
+
+        cout << "Imóvel mais próximo: " << endl;
+        imovelMaisProximo.showInfo();
+
+        cout << "----------------------------------------" << endl;
 
     }
 

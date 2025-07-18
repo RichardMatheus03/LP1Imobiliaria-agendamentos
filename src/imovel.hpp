@@ -23,6 +23,7 @@ class Imovel{
         double getLng() const;
         double getPreco() const;
         std::string getEndereco() const;
+        void showInfo();
 
         Imovel(std::string tipoStr, int proprietarioId, double lat, double lng, double preco, std::string endereco); //Construtor
         Imovel(); //Construtor Padrão

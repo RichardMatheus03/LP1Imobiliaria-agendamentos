@@ -7,6 +7,9 @@
 #include "corretor.hpp"
 #include "imovel.hpp"
 
+#include <iostream>
+using namespace std;
+
 constexpr double EARTH_R = 6371.0; // Raio da Terra em km
 
 double haversine(double lat1, double lon1, double lat2, double lon2) {
@@ -42,7 +45,9 @@ Imovel encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Im
     for (size_t i = 0; i < imoveis.size(); ++i) {
         
         double distancia = haversine(corretor.getLat(), corretor.getLng(), imoveis[i].getLat(), imoveis[i].getLng());
-
+        
+        cout << "Distância em km " << distancia << endl;
+        
         if (distancia < menorDistancia) {
             menorDistancia = distancia;
             imovelMaisProximo = imoveis[i];
@@ -50,11 +55,7 @@ Imovel encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Im
 
     }
 
+
     return imovelMaisProximo;
 
 };
-
-std::vector<Imovel> pegarImoveisDesseCorretor(Corretor corretor){
-    int id = corretor.getId();
-    
-}

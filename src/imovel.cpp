@@ -1,5 +1,8 @@
 #include "imovel.hpp"
 
+#include <iostream>
+
+
 int Imovel::nextId = 1; //Inicia o primeiro ID como 1
 
 Imovel::Imovel(std::string tipoStr, int proprietarioId, double lat, double lng, double preco, std::string endereco):
@@ -53,4 +56,13 @@ Imovel::Imovel(){
     this->lng = 0.0;
     this->preco = 0;
     this->endereco = "";
+};
+
+void Imovel::showInfo() {
+    std::cout << "ID: " << id << "\n"
+              << "Tipo: " << getTipoAsString() << "\n"
+              << "Proprietário ID: " << proprietarioId << "\n"
+              << "Localização: (" << lat << ", " << lng << ")\n"
+              << "Preço: R$" << preco << "\n"
+              << "Endereço: " << endereco << std::endl;
 };
