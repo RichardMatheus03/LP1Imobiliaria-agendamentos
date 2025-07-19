@@ -58,3 +58,19 @@ Imovel* encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<I
     return imovelMaisProximo;
 
 };
+
+// Adicionar hora ao agendamento
+int horaAtual = 9 * 60 
+int tempoDeslocamento = round(menorDistancia * 2.0);
+    horaAtual += tempoDeslocamento;
+
+            // conversão da hara
+            int hora = horaAtual / 60;
+            int minuto = horaAtual % 60;
+            std::cout << std::setfill('0') << std::setw(2) << hora << ":"
+                      << std::setw(2) << minuto << " Imóvel " << imovelEscolhido->getId() << std::endl;
+
+            // atualização de local do corretor
+            pontoAtualLat = imovelEscolhido->getLat();
+            pontoAtualLon = imovelEscolhido->getLng();
+            horaAtual += 60;
