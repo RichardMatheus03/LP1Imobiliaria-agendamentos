@@ -13,36 +13,45 @@ int main() {
 
     std::vector<Corretor> corretoresAvaliadores = filtrarCorretoresAvaliadores(corretores);
 
+    //Separando imóveis para cada corretor (round-robin)
+    for (size_t i = 0; i < imoveis.size(); ++i){
+        size_t j = i % corretoresAvaliadores.size(); //% = resto da divisão inteira
+        corretoresAvaliadores[j].addImovel(&imoveis[i]);
+    }
+
     for (size_t i = 0; i < corretoresAvaliadores.size(); ++i) {
         
-        // Para cada avaliador
-        Corretor& corretorAvaliador = corretoresAvaliadores[i];
+        //Para cada avaliador
+        Corretor corretorAvaliador = corretoresAvaliadores[i];
         
-        //Separando imoveis para cada corretor
-        std::vector<Imovel> imoveisDesseCorretor;
-        for (size_t i = 0; i < imoveis.size(); ++i) {
-            if (imoveis[i].getProprietarioId() == corretorAvaliador.getId()) {
-                imoveisDesseCorretor.push_back(imoveis[i]);
-            }
-        }
-        
-        Imovel imovelMaisProximo = encontrarImovelMaisProximo(corretorAvaliador, imoveisDesseCorretor);  
-        
-        cout << "Corretor: " << corretorAvaliador.getNome() << endl;
-        cout << "id: " << corretorAvaliador.getId() << endl;
+        //Vector de imóveis do corretor
+        std::vector<Imovel*> imoveisDesseCorretor = corretorAvaliador.getImovelVector();
 
-        cout << "----------------------------------------" << endl;
+        std::cout << "Corretor " << corretorAvaliador.getId() << endl;
+        for (size_t j = 0; j < imoveisDesseCorretor.size(); ++j){
+            std::cout << "    " << "Imóvel: " << imoveisDesseCorretor[j]->getId() << endl;
+        }
+
+        std::cout << endl << "----------------------------------------" << endl << endl;
+
+        
+        /*Imovel* imovelMaisProximo = encontrarImovelMaisProximo(corretorAvaliador, imoveisDesseCorretor);  
+        
+        std::cout << "Corretor: " << corretorAvaliador.getNome() << endl;
+        std::cout << "id: " << corretorAvaliador.getId() << endl;
+
+        std::cout << "----------------------------------------" << endl;
 
         for (size_t i = 0; i < imoveisDesseCorretor.size(); ++i) {
-            imoveisDesseCorretor[i].showInfo();
+            imoveisDesseCorretor[i]->showInfo();
         }
 
-        cout << "----------------------------------------" << endl;
+        std::cout << "----------------------------------------" << endl;
 
-        cout << "Imóvel mais próximo: " << endl;
-        imovelMaisProximo.showInfo();
+        std::cout << "Imóvel mais próximo: " << endl;
+        imovelMaisProximo->showInfo();
 
-        cout << "----------------------------------------" << endl;
+        std::cout << "----------------------------------------" << endl;*/
 
     }
 

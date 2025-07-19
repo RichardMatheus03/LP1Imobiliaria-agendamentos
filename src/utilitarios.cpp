@@ -37,14 +37,14 @@ std::vector<Corretor> filtrarCorretoresAvaliadores(const std::vector<Corretor>& 
 
 }
 
-Imovel encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Imovel>& imoveis) {
+Imovel* encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Imovel*>& imoveis) {
     
-    double menorDistancia = 9*10^9; //É necessário inicializar a variável com algum valor
-    Imovel imovelMaisProximo;
+    double menorDistancia = 1e9; //É necessário inicializar a variável com algum valor. 
+    Imovel* imovelMaisProximo = nullptr;
     
     for (size_t i = 0; i < imoveis.size(); ++i) {
         
-        double distancia = haversine(corretor.getLat(), corretor.getLng(), imoveis[i].getLat(), imoveis[i].getLng());
+        double distancia = haversine(corretor.getLat(), corretor.getLng(), imoveis[i]->getLat(), imoveis[i]->getLng());
         
         cout << "Distância em km " << distancia << endl;
         
@@ -54,7 +54,6 @@ Imovel encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Im
         }
 
     }
-
 
     return imovelMaisProximo;
 

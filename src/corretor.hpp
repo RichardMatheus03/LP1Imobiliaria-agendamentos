@@ -2,6 +2,8 @@
 #define CORRETOR_H
 
 #include <string>
+#include <vector>
+#include "imovel.hpp"
 
 class Corretor{
     private:
@@ -12,6 +14,7 @@ class Corretor{
         double lat;
         double lng;
         std::string nome;
+        std::vector<Imovel*> imoveis;
 
     public:
         std::string getTelefone() const;
@@ -20,7 +23,9 @@ class Corretor{
         double getLng() const;
         std::string getNome() const;
         int getId() const;
-        
+        void addImovel(Imovel* imovel);
+        std::vector<Imovel*> getImovelVector() const;
+
         // Construtor
         Corretor(std::string telefone, bool avaliador, double lat, double lng, std::string nome); //construtor
         Corretor(); // Contrutor padrão

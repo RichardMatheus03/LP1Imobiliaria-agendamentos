@@ -29,6 +29,14 @@ int Corretor::getId() const{
     return this->id;
 }
 
+void Corretor::addImovel(Imovel* imovel) {
+    imoveis.push_back(imovel);
+}
+
+std::vector<Imovel*> Corretor::getImovelVector() const {
+    return this->imoveis;
+}
+
 Corretor::Corretor() {
     this->id = nextId++; //Incrementa o ID a cada corretor construído
     this->telefone = "";
