@@ -12,8 +12,8 @@
 
 double haversine(double lat1, double lon1, double lat2, double lon2);
 
-std::vector<Corretor> filtrarCorretoresAvaliadores(const std::vector<Corretor>& corretores);
+std::vector<Corretor*> filtrarCorretoresAvaliadores(std::vector<Corretor>& corretores);
 
-Imovel* encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Imovel*>& imoveis);
+Imovel* encontrarImovelMaisProximo(double lat, double lng, const std::vector<Imovel*>& imoveis);
 
 #endif

@@ -14,8 +14,10 @@ class Imovel{
         double lat, lng;
         double preco;
         std::string endereco;
+        bool visitado;
+        int horaVisita;
     public:
-        //getters
+        //getters e setters
         double getId() const;
         std::string getTipoAsString() const;
         int getProprietarioId() const;
@@ -23,6 +25,10 @@ class Imovel{
         double getLng() const;
         double getPreco() const;
         std::string getEndereco() const;
+        void visitar(bool input);
+        bool isVisitado() const;
+        void setHoraVisita(int input);
+        int getHoraVisita();
         void showInfo();
 
         Imovel(std::string tipoStr, int proprietarioId, double lat, double lng, double preco, std::string endereco); //Construtor

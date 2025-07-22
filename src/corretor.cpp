@@ -33,7 +33,7 @@ void Corretor::addImovel(Imovel* imovel) {
     imoveis.push_back(imovel);
 }
 
-std::vector<Imovel*> Corretor::getImovelVector() const {
+std::vector<Imovel*>& Corretor::getImovelVector(){
     return this->imoveis;
 }
 
@@ -54,3 +54,8 @@ void Corretor::mostrarInfo() {
     std::cout << "Longitude: " << lng << std::endl;
     std::cout << "Nome: " << nome << std::endl;
 } //Método para mostrar as informações do corretor
+
+void Corretor::setPos(double newLat, double newLng){ //Define a posição atual 
+    this->lat = newLat;
+    this->lng = newLng;
+}

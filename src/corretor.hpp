@@ -24,7 +24,7 @@ class Corretor{
         std::string getNome() const;
         int getId() const;
         void addImovel(Imovel* imovel);
-        std::vector<Imovel*> getImovelVector() const;
+        std::vector<Imovel*>& getImovelVector();
 
         // Construtor
         Corretor(std::string telefone, bool avaliador, double lat, double lng, std::string nome); //construtor
@@ -32,6 +32,7 @@ class Corretor{
         
         //Métodos
         void mostrarInfo();
+        void setPos(double lat, double lng);
 };
 
 #endif

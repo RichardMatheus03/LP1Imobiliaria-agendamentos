@@ -23,13 +23,13 @@ double haversine(double lat1, double lon1, double lat2, double lon2) {
     return EARTH_R * c;
 }
 
-std::vector<Corretor> filtrarCorretoresAvaliadores(const std::vector<Corretor>& corretores) {
+std::vector<Corretor*> filtrarCorretoresAvaliadores(std::vector<Corretor>& corretores) {
 
-    std::vector<Corretor> avaliadores;
+    std::vector<Corretor*> avaliadores;
 
     for (size_t i = 0; i < corretores.size(); ++i) {
         if (corretores[i].getAvaliador()) {
-            avaliadores.push_back(corretores[i]);
+            avaliadores.push_back(&corretores[i]);
         }
     }
 
@@ -37,22 +37,23 @@ std::vector<Corretor> filtrarCorretoresAvaliadores(const std::vector<Corretor>& 
 
 }
 
-Imovel* encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<Imovel*>& imoveis) {
+//Retorna o imóvel mais próximo *não visitado*
+Imovel* encontrarImovelMaisProximo(double lat, double lng, const std::vector<Imovel*>& imoveis) {
     
     double menorDistancia = 1e9; //É necessário inicializar a variável com algum valor. 
     Imovel* imovelMaisProximo = nullptr;
     
     for (size_t i = 0; i < imoveis.size(); ++i) {
-        
-        double distancia = haversine(corretor.getLat(), corretor.getLng(), imoveis[i]->getLat(), imoveis[i]->getLng());
-        
-        cout << "Distância em km " << distancia << endl;
-        
-        if (distancia < menorDistancia) {
-            menorDistancia = distancia;
-            imovelMaisProximo = imoveis[i];
+        if(imoveis[i]->isVisitado() == false){
+            double distancia = haversine(lat, lng, imoveis[i]->getLat(), imoveis[i]->getLng());
+            
+            cout << "Distância em km " << distancia << endl;
+            
+            if ((distancia < menorDistancia)) {
+                menorDistancia = distancia;
+                imovelMaisProximo = imoveis[i];
+            }
         }
-
     }
 
     return imovelMaisProximo;
@@ -60,7 +61,7 @@ Imovel* encontrarImovelMaisProximo(const Corretor& corretor, const std::vector<I
 };
 
 // Adicionar hora ao agendamento
-int horaAtual = 9 * 60 
+/*int horaAtual = 9 * 60;
 int tempoDeslocamento = round(menorDistancia * 2.0);
     horaAtual += tempoDeslocamento;
 
@@ -73,4 +74,4 @@ int tempoDeslocamento = round(menorDistancia * 2.0);
             // atualização de local do corretor
             pontoAtualLat = imovelEscolhido->getLat();
             pontoAtualLon = imovelEscolhido->getLng();
-            horaAtual += 60;
+            horaAtual += 60;*/

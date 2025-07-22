@@ -11,47 +11,56 @@ int main() {
     auto clientes = lerClientes();
     auto imoveis = lerImoveis();
 
-    std::vector<Corretor> corretoresAvaliadores = filtrarCorretoresAvaliadores(corretores);
+    for (auto& imovel : imoveis) {
+    std::cout << "ID: " << imovel.getId() << std::endl;
+}
+
+    std::vector<Corretor*> corretoresAvaliadores = filtrarCorretoresAvaliadores(corretores);
 
     //Separando imóveis para cada corretor (round-robin)
     for (size_t i = 0; i < imoveis.size(); ++i){
         size_t j = i % corretoresAvaliadores.size(); //% = resto da divisão inteira
-        corretoresAvaliadores[j].addImovel(&imoveis[i]);
+        corretoresAvaliadores[j]->addImovel(&imoveis[i]);
     }
 
     for (size_t i = 0; i < corretoresAvaliadores.size(); ++i) {
         
         //Para cada avaliador
-        Corretor corretorAvaliador = corretoresAvaliadores[i];
+        Corretor* corretorAvaliador = corretoresAvaliadores[i];
         
         //Vector de imóveis do corretor
-        std::vector<Imovel*> imoveisDesseCorretor = corretorAvaliador.getImovelVector();
+        std::vector<Imovel*> imoveisDesseCorretor = corretorAvaliador->getImovelVector();
 
-        std::cout << "Corretor " << corretorAvaliador.getId() << endl;
+        //Agendamento
+        /*unsigned int horaAtual = 9 * 60;;
+        double latAtual = corretorAvaliador->getLat();
+        double lngAtual = corretorAvaliador->getLng();
+        while(true){
+            Imovel* imovelAtual = encontrarImovelMaisProximo(latAtual, lngAtual, imoveisDesseCorretor);
+            if (imovelAtual == nullptr) break;
+
+            double distancia = haversine(latAtual, lngAtual, imovelAtual->getLat(), imovelAtual->getLng());
+            int tempoDeslocamento = static_cast<int>(round(2.0 * distancia));
+            horaAtual += tempoDeslocamento;
+
+            imovelAtual->setHoraVisita(horaAtual);
+            imovelAtual->visitar(true);
+
+            latAtual = imovelAtual->getLat();
+            lngAtual = imovelAtual->getLng();
+
+            horaAtual += 60;
+        }*/
+
+        //impressão
+        std::cout << "Corretor " << corretorAvaliador->getId() << endl;
         for (size_t j = 0; j < imoveisDesseCorretor.size(); ++j){
-            std::cout << "    " << "Imóvel: " << imoveisDesseCorretor[j]->getId() << endl;
+            std::cout << imoveisDesseCorretor[j]->getHoraVisita() << " Imóvel: " << imoveisDesseCorretor[j]->getId() << endl;
         }
 
         std::cout << endl << "----------------------------------------" << endl << endl;
 
-        
-        /*Imovel* imovelMaisProximo = encontrarImovelMaisProximo(corretorAvaliador, imoveisDesseCorretor);  
-        
-        std::cout << "Corretor: " << corretorAvaliador.getNome() << endl;
-        std::cout << "id: " << corretorAvaliador.getId() << endl;
-
-        std::cout << "----------------------------------------" << endl;
-
-        for (size_t i = 0; i < imoveisDesseCorretor.size(); ++i) {
-            imoveisDesseCorretor[i]->showInfo();
-        }
-
-        std::cout << "----------------------------------------" << endl;
-
-        std::cout << "Imóvel mais próximo: " << endl;
-        imovelMaisProximo->showInfo();
-
-        std::cout << "----------------------------------------" << endl;*/
+        imoveisDesseCorretor.clear();
 
     }
 
