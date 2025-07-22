@@ -8,8 +8,7 @@ int Imovel::nextId = 1; //Inicia o primeiro ID como 1
 Imovel::Imovel(std::string tipoStr, int proprietarioId, double lat, double lng, double preco, std::string endereco):
     tipo(parseTipo(tipoStr)), proprietarioId(proprietarioId), lat(lat), lng(lng), preco(preco), endereco(endereco){
         this->id = nextId++; //Incrementa o ID a cada corretor construído
-        this->horaVisita = 0;
-        this->visitado = false;
+
 } //Construtor
 
 TipoImovel parseTipo(const std::string& tipoStr){ //Converte String para enum
@@ -50,18 +49,19 @@ double Imovel::getPreco() const{
 std::string Imovel::getEndereco() const{
     return this->endereco;
 }
-void Imovel::visitar(bool input){
-    this->visitado = input;
-}
-bool Imovel::isVisitado() const{
+int Imovel::isVisitado() const{
     return this->visitado;
+}
+void Imovel::visitar(int v){
+    this->visitado = v;
+}
+int Imovel::getHoraVisita() const{
+    return this->horaVisita;
 }
 void Imovel::setHoraVisita(int input){
     this->horaVisita = input;
 }
-int Imovel::getHoraVisita(){
-    return this->horaVisita;
-}
+
 
 Imovel::Imovel(){
     this->tipo = TipoImovel::Casa;

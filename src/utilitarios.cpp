@@ -23,13 +23,13 @@ double haversine(double lat1, double lon1, double lat2, double lon2) {
     return EARTH_R * c;
 }
 
-std::vector<Corretor*> filtrarCorretoresAvaliadores(std::vector<Corretor>& corretores) {
+std::vector<Corretor> filtrarCorretoresAvaliadores(const std::vector<Corretor>& corretores) {
 
-    std::vector<Corretor*> avaliadores;
+    std::vector<Corretor> avaliadores;
 
     for (size_t i = 0; i < corretores.size(); ++i) {
         if (corretores[i].getAvaliador()) {
-            avaliadores.push_back(&corretores[i]);
+            avaliadores.push_back(corretores[i]);
         }
     }
 
@@ -37,7 +37,6 @@ std::vector<Corretor*> filtrarCorretoresAvaliadores(std::vector<Corretor>& corre
 
 }
 
-//Retorna o imóvel mais próximo *não visitado*
 Imovel* encontrarImovelMaisProximo(double lat, double lng, const std::vector<Imovel*>& imoveis) {
     
     double menorDistancia = 1e9; //É necessário inicializar a variável com algum valor. 
@@ -46,8 +45,6 @@ Imovel* encontrarImovelMaisProximo(double lat, double lng, const std::vector<Imo
     for (size_t i = 0; i < imoveis.size(); ++i) {
         if(imoveis[i]->isVisitado() == false){
             double distancia = haversine(lat, lng, imoveis[i]->getLat(), imoveis[i]->getLng());
-            
-            cout << "Distância em km " << distancia << endl;
             
             if ((distancia < menorDistancia)) {
                 menorDistancia = distancia;
@@ -59,19 +56,3 @@ Imovel* encontrarImovelMaisProximo(double lat, double lng, const std::vector<Imo
     return imovelMaisProximo;
 
 };
-
-// Adicionar hora ao agendamento
-/*int horaAtual = 9 * 60;
-int tempoDeslocamento = round(menorDistancia * 2.0);
-    horaAtual += tempoDeslocamento;
-
-            // conversão da hara
-            int hora = horaAtual / 60;
-            int minuto = horaAtual % 60;
-            std::cout << std::setfill('0') << std::setw(2) << hora << ":"
-                      << std::setw(2) << minuto << " Imóvel " << imovelEscolhido->getId() << std::endl;
-
-            // atualização de local do corretor
-            pontoAtualLat = imovelEscolhido->getLat();
-            pontoAtualLon = imovelEscolhido->getLng();
-            horaAtual += 60;*/
